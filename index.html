@@ -7,12 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NG7FPWD');</script>
-<!-- End Google Tag Manager -->
+    <script>
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NG7FPWD');
+    </script>
+    <!-- End Google Tag Manager -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
@@ -27,8 +38,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NG7FPWD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NG7FPWD" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="preloader">
         <div id="status">&nbsp;</div>
     </div>
@@ -50,7 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <form action="#" class="search_form" id="formBuscar">
                                 <input type="button" value="Iniciar Sesión" class="btn btn-primary">
                                 <input type="text" placeholder="Text to Search" id="textoInput">
-                                <input type="submit" value="">
+                                <input type="submit" value="" onclick="trackBuscar(this);">
                             </form>
                         </div>
                     </div>
@@ -538,6 +551,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         });
         console.log(this);
     }
+
+    function trackBuscar(e) {
+        var searh = $("input#textoInput").val();
+        dataLayer.push({
+            'event': 'VirtualEvent',
+            'category': 'Capacitaciones - Home',
+            'action': 'Buscar en la web',
+            'label': searh,
+        });
+        console.log(e);
+    }
+
     $("a.link-nav").hover(function() {
         dataLayer.push({
             'event': 'VirtualEvent',
