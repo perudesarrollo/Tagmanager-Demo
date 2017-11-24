@@ -69,7 +69,7 @@
                     </div>
                     <div class="header_bottom">
                         <div class="header_bottom_left"><a class="logo" href="index.html">Capacitaciones</a></div>
-                        <div class="header_bottom_right"><a href="#"><img src="images/addbanner_728x90_V1.jpg" alt=""></a></div>
+                        <div class="header_bottom_right"><a onclick="promoBanner();" href="#"><img src="images/addbanner_728x90_V1.jpg" alt=""></a></div>
                     </div>
                 </div>
             </div>
@@ -571,6 +571,22 @@
             'label': $(this).text(),
         });
     })
+
+    function promoBanner() {
+        dataLayer.push({
+            'event': 'promotionView',
+            'ecommerce': {
+                'promoView': {
+                    'promotions': [{
+                        'id': '12345',
+                        'name': 'Site Template and Banners for $3',
+                        'position': 'Anuncio Superior',
+                        'creative': 'url'
+                    }]
+                }
+            }
+        });
+    }
     </script>
 </body>
 
